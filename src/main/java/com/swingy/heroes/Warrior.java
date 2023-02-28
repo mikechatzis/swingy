@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class Warrior extends Hero {
     private final String[] availableWeapons = {"sword", "axe", "mace", "hammer", "rifle"};
     private Weapon[] equipedWeapons = new Weapon[2];
+    private String[] masteries = new String[10];
     private boolean dualWielding;
 
     public Warrior(String name) throws IllegalArgumentException {
@@ -21,7 +22,7 @@ public class Warrior extends Hero {
         return equipedWeapons;
     }
 
-    public void setEquipedWeapons(Weapon... equipedWeapon) {
+    public void equipWeapons(Weapon... equipedWeapon) {
         if (equipedWeapon.length > 2) {
             throw new IllegalArgumentException("You can only equip up to 2 weapons at a time.");
         }
@@ -51,5 +52,25 @@ public class Warrior extends Hero {
         }
         setAtk(getAtk() + equipedWeapon[0].getDamage() + equipedWeapon[1].getDamage());
         setDef(getDef() + equipedWeapon[0].getDefence() + equipedWeapon[1].getDefence());
+    }
+
+    public void unequipWeapons(Weapon... w) {
+        for (Weapon weapon : w) {
+            if (weapon == null) {
+                continue;
+            }
+            if (!Arrays.asList(equipedWeapons).contains(weapon)) {
+                throw new IllegalArgumentException("You cannot unequip a weapon you do not have equipped.");
+            }
+            if (Arrays.asList(equipedWeapons).contains(weapon)) {
+                Arrays.asList(equipedWeapons).remove(weapon);
+                setAtk(getAtk() - weapon.getDamage());
+                setDef(getDef() - weapon.getDefence());
+            }
+        }
+    }
+
+    private void evaluateMasteries() {
+
     }
 }
