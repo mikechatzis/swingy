@@ -36,5 +36,4 @@ git clone https://github.com/mikechatzis/Avaj_launcher.git swingy
 cd swingy
 mvn clean package
 java -cp target/swingy-1.jar com.swingy.Swingy
-
 ```
