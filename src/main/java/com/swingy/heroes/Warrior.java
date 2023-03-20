@@ -53,7 +53,55 @@ public class Warrior extends Hero {
                 setMastery(warrMasteries[3], arg);
                 break;
             default:
-                break;
+                throw new IllegalArgumentException("Lvl benchmark incorrect.");
+        }
+    }
+
+    /** evaluate the masteries and add the appropriate effect */
+    public void evaluateMasteries() {
+        if (warrMasteries[0].length > 1)
+            return;
+        if (warrMasteries[0][0] == "deep lacerations") {
+            setAtk(getAtk() + 2);
+        } else if (warrMasteries[0][0] == "endurance of the boar") {
+            sethp(gethp() + 2);
+        } else if (warrMasteries[0][0] == "brutal strikes") {
+            setAtk(getAtk() + 1);
+            sethp(gethp() + 1);
+        }
+
+        if (warrMasteries[1].length > 1)
+            return;
+        if (warrMasteries[1][0] == "frenzy") {
+            setAtk(getAtk() + 2);
+        } else if (warrMasteries[1][0] == "blade master") {
+            setAtk(getAtk() + 1);
+            setDef(getDef() + 1);
+        } else if (warrMasteries[1][0] == "sunderer") {
+            setAtk(getAtk() + 1);
+            setDef(getDef() + 1);
+        }
+
+        if (warrMasteries[2].length > 1)
+            return;
+        if (warrMasteries[2][0] == "ignore pain") {
+            sethp(gethp() + 2);
+        } else if (warrMasteries[2][0] == "cull the weak") {
+            setAtk(getAtk() + 1);
+            setDef(getDef() + 1);
+        } else if (warrMasteries[2][0] == "relentless assault") {
+            setAtk(getAtk() + 1);
+            setDef(getDef() + 1);
+        }
+
+        if (warrMasteries[3].length > 1)
+            return;
+        if (warrMasteries[3][0] == "Juggernaught") {
+            sethp(gethp() + 2);
+        } else if (warrMasteries[3][0] == "Defender") {
+            setDef(getDef() + 2);
+        } else if (warrMasteries[3][0] == "Warbringer") {
+            setAtk(getAtk() + 2);
         }
     }
 }
