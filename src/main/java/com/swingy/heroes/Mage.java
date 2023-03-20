@@ -5,6 +5,6 @@ public class Mage extends Hero {
     private static final int[] STATS = new int[] {12, 12};
 
     Mage(String name) {
-        super(new String[] {name, "mage"}, STATS);
+        super(new String[] {name, "mage"}, STATS, new String[] {"staff", "wand", "scepter", "book"});
     }
 }
